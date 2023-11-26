@@ -1,30 +1,30 @@
-describe("Login use case", () => {
-    beforeEach(() => {
+import '../support/commands';
+
+describe("Login and Logout", () => {
+  beforeEach(() => {
     
-      cy.visit("/login");
-    });
-  
-    it("should navigate to the login page", () => {
-      cy.url().should("include", "/login");
-    });
-  
-    it("should allow a user to log in with email and password", () => {
-   
-   
-      cy.url().should("include", "/login");
-  
-    
-      cy.get("#login-email").clear().type("denggg4399@gmail.com");
-      cy.get("#login-password").clear().type("1234567");
-  
-     
-      cy.get("#login_button").contains("Login").click();
-  
-      
-      cy.get("#user_display_email").contains("denggg4399@gmail.com");
-  
-      
-      cy.get("button").contains("Logout").click();
-    });
+    cy.visit("/login");
   });
-  
+
+  it("should login with valid credentials", () => {
+    const email = "your_email@example.com";
+    const password = "your_password";
+
+    cy.loginWithEmailAndPassword(email, password);
+
+   
+    cy.checkIfUserIsLoggedIn(email);
+  });
+
+  it("should logout", () => {
+    const email = "your_email@example.com";
+    const password = "your_password";
+
+   
+    cy.loginWithEmailAndPassword(email, password);
+   
+    cy.logout();
+
+    cy.url().should("include", "/login");
+  });
+});
