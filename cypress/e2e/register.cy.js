@@ -1,32 +1,29 @@
-import '../support/commands';
+import '../support/commands'
 
 describe("Registration use case", () => {
-  beforeEach(() => {
-    //visit
-    cy.visit("/register");
-  });
 
-  context("Navigate to the registration page", () => {
-    it("should navigate to the registration page", () => {
-      cy.url().should("include", "/register");
+    describe("Navigate to the registration page", () => {
+        it("Navigates to registration page", () => {    
+            cy.visit("/register");
+        });
     });
-  });
 
-  context("Register account", () => {
-    it("should allow a user to register and then log out", () => {
-      //Generate mailbox
-      const uniqueEmail = `testuser${Date.now()}@example.com`;
-      const accountName = "aaa";
-      const password = "1234567";
+    describe("Register account", () => {
+        it("Enter account details & Register then Check if user logged in, then logout", () => {   
+            cy.url().should("include", `/register`);
+            
+            const accountName = "Evan1234";
+            const email = "evancasey1234@gmail.com";
+            const password = "1234567";
+            
+            
+            cy.Register(accountName, email, password);
 
-     
-      cy.Register(accountName, uniqueEmail, password);
+           
+            cy.checkIfUserIsLoggedIn(email);
 
-      
-      cy.checkIfUserIsLoggedIn(uniqueEmail);
-
-      
-      cy.clickButton("Logout");
+         
+            cy.logout();
+        });
     });
-  });
 });
