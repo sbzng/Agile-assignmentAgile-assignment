@@ -44,3 +44,15 @@ Cypress.Commands.add("loginWithEmailAndPassword", (email, password) => {
     cy.get("button").contains("Logout").click();
   });
   
+  Cypress.Commands.add("loginAndNavigateToAddReview", (email, password, movieIndex) => {
+   
+    cy.login(email, password);
+  
+   
+    cy.clickReviewButton(movieIndex);
+  });
+  
+  Cypress.Commands.add("addMovieToFavorite", (movieIndex) => {
+    cy.addToFavourites(movieIndex);
+  });
+  

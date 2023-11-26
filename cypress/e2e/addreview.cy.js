@@ -1,3 +1,5 @@
+import "../support/commands";
+
 let movies;
 
 describe("The review feature", () => {
@@ -13,50 +15,34 @@ describe("The review feature", () => {
       });
   });
 
-  it("Favorited movies contain the red heart", () => {
-    cy.visit("/");
-    cy.get(".MuiCardHeader-root").eq(1).find("svg").should("not.exist");
-    cy.get("button[aria-label='add to favorites']").eq(1).click();
-    cy.get(".MuiCardHeader-root").eq(1).find("svg");
+  describe("Selecting favourite movies", () => {
+    it("Favorited movies contain the red heart", () => {
+      cy.visit("/");
+      cy.checkRedHeartExists(1);
+    });
   });
 
   describe("The favourites page", () => {
     beforeEach(() => {
-      // Select two favourites and navigate to Favourites page
-      cy.get("button[aria-label='add to favorites']").eq(1).click();
-      cy.get("button[aria-label='add to favorites']").eq(3).click();
-      cy.get("button").contains("Favorites").click();
+      cy.addToFavourites(1);
+      cy.addToFavourites(3);
+      cy.clickButton("Favorites");
     });
-
     it("The favorited movies are listed.", () => {
-      cy.get(".MuiCardHeader-content").should("have.length", 2);
-      cy.get(".MuiCardHeader-content")
-        .eq(0)
-        .find("p")
-        .contains(movies[1].title);
-      cy.get(".MuiCardHeader-content")
-        .eq(1)
-        .find("p")
-        .contains(movies[3].title);
+      cy.checkMoviesLength(2);
+      cy.checkMoviesExist(0, movies[1].title);
+      cy.checkMoviesExist(1, movies[3].title);
     });
   });
 
   describe("The add review page", () => {
     it("navigates to the add review page & adds review", () => {
-      cy.get("svg[data-testid='RateReviewIcon'").eq(0).click();
+      cy.clickReviewButton(0);
 
-      const name = "Evan Casey";
-      const reviewContent = "This is a new film & would be enjoyable to those who like superhero films.";
+      const name = "zang";
+      const reviewContent = "GOOOOOD";
 
-      cy.get("#author").clear().type(name);
-      cy.get("#review").clear().type(reviewContent);
-      cy.get("#select-rating").click();
-
-      cy.contains('Excellent').click();
-
-      cy.get(".MuiButtonBase-root").contains("Submit").click();
-
-      cy.get("svg[data-testid='CloseIcon'").click();
+      cy.addReview(name, reviewContent);
     });
   });
 });

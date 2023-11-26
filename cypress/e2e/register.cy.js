@@ -12,8 +12,8 @@ describe("Registration use case", () => {
         it("Enter account details & Register then Check if user logged in, then logout", () => {   
             cy.url().should("include", `/register`);
             
-            const accountName = "Evan1234";
-            const email = "evancasey1234@gmail.com";
+            const accountName = "zang";
+            const email = "denggg4399@gmail.com";
             const password = "1234567";
             
             
