@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import Header from "../headerMovieList";
-import ActorList from "../actorList";
 import Grid from "@mui/material/Grid";
+
+const LazyActorList = lazy(() => import("../actorList"));
 
 function ActorListPageTemplate({ actors, name, action }) {
   const [nameFilter, setNameFilter] = useState("");
@@ -22,7 +23,11 @@ function ActorListPageTemplate({ actors, name, action }) {
         <Header name={name} />
       </Grid>
       <Grid item container spacing={5}>
-        <ActorList action={action} actors={displayedActors}></ActorList>
+
+        <Suspense fallback={<div>Loading...</div>}>
+
+          <LazyActorList action={action} actors={displayedActors}></LazyActorList>
+        </Suspense>
       </Grid>
     </Grid>
   );

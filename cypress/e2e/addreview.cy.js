@@ -4,15 +4,21 @@ let movies;
 
 describe("The review feature", () => {
   before(() => {
-    cy.request(
-      `https://api.themoviedb.org/3/discover/movie?api_key=${Cypress.env(
-        "TMDB_KEY"
-      )}&language=en-US&include_adult=false&include_video=false&page=1`
-    )
-      .its("body")
-      .then((response) => {
-        movies = response.results;
-      });
+
+    try {
+      cy.request(
+        `https://api.themoviedb.org/3/discover/movie?api_key=${Cypress.env(
+          "TMDB_KEY"
+        )}&language=en-US&include_adult=false&include_video=false&page=1`
+      )
+        .its("body")
+        .then((response) => {
+          movies = response.results;
+        });
+    } catch (error) {
+      cy.log(`Error occurred while making the API request: ${error.message}`);
+      throw error;
+    }
   });
 
   describe("Selecting favourite movies", () => {
@@ -42,7 +48,14 @@ describe("The review feature", () => {
       const name = "zang";
       const reviewContent = "GOOOOOD";
 
-      cy.addReview(name, reviewContent);
+   
+      try {
+        cy.addReview(name, reviewContent);
+      } catch (error) {
+        cy.log(`Error occurred while adding a review: ${error.message}`);
+        throw error;
+      }
     });
   });
 });
+

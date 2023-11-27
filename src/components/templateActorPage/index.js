@@ -1,34 +1,38 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ActorHeader from "../headerActor";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
 import Grid from "@mui/material/Grid";
 
-const TemplateActorPage = ({ actor, children }) => {
+const LazyImageList = lazy(() => import("@mui/material/ImageList"));
+const LazyImageListItem = lazy(() => import("@mui/material/ImageListItem"));
 
+const TemplateActorPage = ({ actor, children }) => {
   return (
     <>
       <ActorHeader actor={actor} />
 
       <Grid container spacing={5} sx={{ padding: "15px" }}>
-      <Grid item xs={3}>
+        <Grid item xs={3}>
           <div sx={{
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "space-around",
           }}>
-            <ImageList 
-                cols={1}>
-                    <ImageListItem key={actor.profile_path} cols={1}>
+
+            <Suspense fallback={<div>Loading...</div>}>
+              <LazyImageList cols={1}>
+                <Suspense fallback={<div>Loading...</div>}>
+                  <LazyImageListItem key={actor.profile_path} cols={1}>
                     <img
-                        src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
-                        alt={actor.poster_path}
+                      src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
+                      alt={actor.poster_path}
                     />
-                    </ImageListItem>
-            </ImageList>
+                  </LazyImageListItem>
+                </Suspense>
+              </LazyImageList>
+            </Suspense>
           </div>
         </Grid>
-  
+
         <Grid item xs={9}>
           {children}
         </Grid>

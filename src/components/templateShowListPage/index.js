@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import Header from "../headerMovieList";
 import FilterCard from "../filterShowCard";
-import ShowList from "../showList";
 import Grid from "@mui/material/Grid";
+
+
+const LazyShowList = lazy(() => import("../showList"));
 
 function ShowListPageTemplate({ shows, name, action }) {
   const [nameFilter, setNameFilter] = useState("");
@@ -35,7 +37,10 @@ function ShowListPageTemplate({ shows, name, action }) {
             genreFilter={genreFilter}
           />
         </Grid>
-        <ShowList action={action} shows={displayedShows}></ShowList>
+        <Suspense fallback={<div>Loading...</div>}>
+
+          <LazyShowList action={action} shows={displayedShows}></LazyShowList>
+        </Suspense>
       </Grid>
     </Grid>
   );
