@@ -6,7 +6,7 @@ import Card from '@mui/material/Card';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { auth, sendPasswordResetEmail } from "../../firebase";
+import { auth, sendPasswordReset } from "../../firebase";
 import "./Reset.css";
 function Reset() {
   const [email, setEmail] = useState("");
@@ -30,7 +30,7 @@ function Reset() {
           placeholder="E-mail Address" />
           <br />
           <Button  className="reset__btn" variant="outlined"
-          onClick={() => sendPasswordResetEmail(email)}> Send password reset email</Button>
+          onClick={() => sendPasswordReset (email)}> Send password reset email</Button>
           <br />
           <Typography variant="p" color="text.secondary">
           Don't have an account? <Link to="/register">Register</Link> now.

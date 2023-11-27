@@ -30,16 +30,16 @@ function Login() {
             className="login__textBox"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email Address" id="standard-basic" label="Email address" variant="standard" />
+            placeholder="Email Address" id="login-email" label="Email address" variant="standard" />
           <br />
           <TextField type="password"
             className="login__textBox"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password" id="standard-basic" label="Password" variant="standard" />
+            placeholder="Password" id="login-password" label="Password" variant="standard" />
           <br />
           <Button className="login__btn"
-            onClick={() => logInWithEmailAndPassword(email, password)} variant="outlined">Login</Button>
+            onClick={() => logInWithEmailAndPassword(email, password)} id ="login_button" variant="outlined">Login</Button>
           <br />
           <Button className="login__btn login__google" onClick={signInWithGoogle} variant="outlined">Login with Google</Button>
           <br />
