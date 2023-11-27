@@ -60,3 +60,7 @@ Cypress.Commands.add("loginWithEmailAndPassword", (email, password) => {
     cy.get(".MuiPaginationItem-root").eq(index).contains(2).click();
   });
   
+  Cypress.Commands.add('removeFavourite', (index) => {
+    cy.get("button[aria-label='remove from favorites']").eq(index).click();
+  });
+  
