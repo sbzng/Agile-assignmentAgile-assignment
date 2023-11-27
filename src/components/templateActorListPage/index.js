@@ -23,9 +23,9 @@ function ActorListPageTemplate({ actors, name, action }) {
         <Header name={name} />
       </Grid>
       <Grid item container spacing={5}>
-        {/* 使用Suspense包裹按需加载的组件 */}
+
         <Suspense fallback={<div>Loading...</div>}>
-          {/* 渲染按需加载的ActorList组件 */}
+
           <LazyActorList action={action} actors={displayedActors}></LazyActorList>
         </Suspense>
       </Grid>
