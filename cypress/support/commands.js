@@ -55,4 +55,8 @@ Cypress.Commands.add("loginWithEmailAndPassword", (email, password) => {
   Cypress.Commands.add("addMovieToFavorite", (movieIndex) => {
     cy.addToFavourites(movieIndex);
   });
+
+  Cypress.Commands.add('pagination', (index) => {
+    cy.get(".MuiPaginationItem-root").eq(index).contains(2).click();
+  });
   
