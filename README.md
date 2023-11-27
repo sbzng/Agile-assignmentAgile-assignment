@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+Assignment 1 - Agile Software Practice
+Name: Shaobo Zang
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To use this application, install Cypress and create the cypress.env.json file and .env file in the movies folder of the project and include your TMDB API key inside of it.
 
-## Available Scripts
+To add your api you can include it in cypress.env.json like so:
 
-In the project directory, you can run:
+TMDB_KEY=<YOUR_TMDB_API_KEY>
 
-### `npm start`
+To add your api you can include it in the .env like so:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+REACT_APP_TMDB_KEY=<YOUR_TMDB_API_KEY>
+FAST_REFRESH=false
+Test with auto
+six in total e2e tests that demonstrates the new functionality in the application.
+E2E Tests 
+removeFavourite.cy.js - Removing a movie from favourites list.
+login.cy.js - Login with firebase.
+pagination.cy.js - Implement pagination.
+register.cy.js - Register with firebase.
+addreview.cy.js - Display the review functionality for a movie.
+searchMovie.cy.js - Searching functionality implemented.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Branching 
+Branch-Edit-Merge workflow shown in commit history
 
-### `npm test`
+Error/Exception 
+addReview and register
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Bundling/Code splitting
+all the template
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Component Testing
+actorCard.cy.js review.cy.js
