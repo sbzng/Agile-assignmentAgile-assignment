@@ -11,8 +11,12 @@ To add your api you can include it in the .env like so:
 
 REACT_APP_TMDB_KEY=<YOUR_TMDB_API_KEY>
 FAST_REFRESH=false
+
+
 Test with auto
 six in total e2e tests that demonstrates the new functionality in the application.
+
+
 E2E Tests 
 removeFavourite.cy.js - Removing a movie from favourites list.
 login.cy.js - Login with firebase.
@@ -29,6 +33,10 @@ addReview and register
 
 Bundling/Code splitting
 all the template
+
+Cypress Custom Commands
+
+support/commands.js
 
 Component Testing
 actorCard.cy.js review.cy.js
